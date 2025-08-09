@@ -1,0 +1,26 @@
+<suite name = "Chat Artmedia Project">
+
+
+<listeners>
+    <listener class-name="ge.chat.artmedia.utils.TestListeners"/>
+</listeners>
+
+<!--    <test name = "UI Tests">-->
+<!--        <classes>-->
+<!--            <class name = "ge.chat.artmedia.tests.ui.HybridTests"/>-->
+<!--            <class name = "ge.chat.artmedia.tests.ui.CrmTests"/>-->
+<!--            <class name = "ge.chat.artmedia.tests.ui.InviteTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name = "API Tests">
+        <classes>
+            <class name = "ge.chat.artmedia.tests.api.FaqApiTests"/>
+            <class name = "ge.chat.artmedia.tests.api.ReportApiTests"/>
+            <class name = "ge.chat.artmedia.tests.api.DashboardApiTests"/>
+
+        </classes>
+    </test>
+
+
+</suite>
