@@ -1,24 +1,30 @@
 <suite name = "Chat Artmedia Project">
+    <test name="Setup">
+        <classes>
+            <class name="ge.chat.artmedia.setup.SuiteSetup"/>
+        </classes>
+    </test>
 
 
 <listeners>
     <listener class-name="ge.chat.artmedia.utils.TestListeners"/>
 </listeners>
 
-<!--    <test name = "UI Tests">-->
-<!--        <classes>-->
-<!--            <class name = "ge.chat.artmedia.tests.ui.HybridTests"/>-->
-<!--            <class name = "ge.chat.artmedia.tests.ui.CrmTests"/>-->
-<!--            <class name = "ge.chat.artmedia.tests.ui.InviteTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name = "UI Tests">
+        <classes>
+            <class name = "ge.chat.artmedia.ui.HybridTests"/>
+            <class name = "ge.chat.artmedia.ui.CrmTests"/>
+            <class name = "ge.chat.artmedia.ui.InviteTests"/>
+
+        </classes>
+    </test>
 
     <test name = "API Tests">
         <classes>
-            <class name = "ge.chat.artmedia.tests.api.FaqApiTests"/>
-            <class name = "ge.chat.artmedia.tests.api.ReportApiTests"/>
-            <class name = "ge.chat.artmedia.tests.api.DashboardApiTests"/>
-
+            <class name = "ge.chat.artmedia.api.FaqApiTests"/>
+            <class name = "ge.chat.artmedia.api.ReportApiTests"/>
+            <class name = "ge.chat.artmedia.api.DashboardApiTests"/>
+            <class name = "ge.chat.artmedia.api.DepartmentApiTests"/>
         </classes>
     </test>
 

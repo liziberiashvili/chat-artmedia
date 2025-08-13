@@ -1,0 +1,22 @@
+{
+  "createFaq": {
+    "language": "en",
+    "question": "Question?",
+    "answer": "Answer",
+    "isVisible": true
+  },
+  "updateFaq": {
+    "id": "{faqId}",
+    "isVisible": true,
+    "language": "en",
+    "question": "Updated question?",
+    "answer": "Updated answer."
+  },
+  "createDepartment": {
+    "name": "Marketing",
+    "users": [
+      "{userId}"
+    ],
+    "language": "en"
+  }
+}
