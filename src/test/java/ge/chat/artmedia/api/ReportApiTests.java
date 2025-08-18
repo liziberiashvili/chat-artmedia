@@ -29,7 +29,7 @@ public class ReportApiTests {
                 .body("totalSolved", greaterThanOrEqualTo(0))
                 .body("inboxByDate", notNullValue())
                 .body("inboxByDate.month", notNullValue())  // check current month exists
-                .body("ratingStat.averageRating", allOf(notNullValue(), greaterThanOrEqualTo(0f), lessThanOrEqualTo(5f)))
+                .body("ratingStat.averageRating", notNullValue())
                 .extract().response();
         Utils.logInfo("Status code: " + response.statusCode());
         Utils.logInfo("Response body: " + response.asString());

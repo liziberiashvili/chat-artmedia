@@ -27,6 +27,10 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-error-toast")
     WebElement errorToast;
 
+
+    /**
+     * Logs in using the provided email and password.
+     */
     public void login(String email, String password) {
 
         sendText(emailField, email);
@@ -34,6 +38,9 @@ public class LoginPage extends BasePage {
         clickToElement(loginButton);
     }
 
+    /**
+     * Verifies that the error toast notification is displayed on the page.
+     */
     public void errorToastIsVisible(){
         assertElementIsVisible(errorToast);
     }

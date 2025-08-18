@@ -5,6 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
 
+
+/**
+ * Utility class for reading JSON test data from the resources folder.
+ */
 public class JsonDataReader {
     private static JsonNode testData;
 

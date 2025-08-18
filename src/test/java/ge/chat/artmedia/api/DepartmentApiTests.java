@@ -57,7 +57,6 @@ public class DepartmentApiTests {
                  .delete("department/{id}")
                  .then()
                  .statusCode(200);
-         System.out.println("deleting department");
      }
  }
 }

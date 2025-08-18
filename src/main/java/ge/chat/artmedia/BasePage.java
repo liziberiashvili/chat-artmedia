@@ -1,9 +1,6 @@
 package ge.chat.artmedia;
 import ge.chat.artmedia.utils.Utils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -64,9 +61,15 @@ public class BasePage {
         Utils.logInfo("Switching to an Iframe: " + locator);
     }
 
-    public void assertElementIsVisible(WebElement locator){
-        waitForElementToBeVisible(locator);
-        Assert.assertTrue(locator.isDisplayed());
+    public void assertElementIsVisible(WebElement locator) {
+        try {
+            waitForElementToBeVisible(locator);
+            Assert.assertTrue(locator.isDisplayed(), "Element is not visible as expected.");
+            Utils.logInfo("Element is visible: " + locator);
+        } catch (TimeoutException e) {
+            Utils.logFail("Element was not visible within the wait time: " + locator);
+            Assert.fail("Element not visible: " + locator, e);
+        }
     }
 
     public void fileUploadWithRelativePath(WebElement locator, String relativePath){
@@ -103,8 +106,13 @@ public class BasePage {
                 "arguments[0].style.display='block'; arguments[0].style.visibility='visible';",
                 locator
         );
+
         locator.sendKeys(file.getAbsolutePath());
         Utils.logInfo("Uploading file: "  + fileName);
+
+        System.out.println("Resource URL: " + resource);
+        System.out.println("Absolute path: " + file.getAbsolutePath());
+        System.out.println("File length: " + file.length());
     }
 
 

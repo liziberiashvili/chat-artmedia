@@ -12,6 +12,9 @@ public class BaseTest {
     protected boolean useChat = false;
     protected boolean useCrm = false;
 
+    /**
+     * Initializes WebDriver instances for CRM and/or chat before each test.
+     */
     @BeforeMethod
     public void setup() {
         if (useCrm) {
@@ -26,6 +29,9 @@ public class BaseTest {
         }
     }
 
+    /**
+     * Quits all active WebDriver instances after each test.
+     */
     @AfterMethod
     public void tearDown() {
         DriverManager.quitCrmDriver();

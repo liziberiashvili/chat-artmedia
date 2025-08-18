@@ -24,6 +24,9 @@ public class AgentAccountSetupPage extends BasePage {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement signUpButton;
 
+    /**
+     * Fills agent registration form with given credentials, submits it, and verifies redirect to login page.
+     */
     public void fillAgentRegistrationFields(String email, String password) {
         sendText(nameField, email);
         sendText(passwordField, password);
