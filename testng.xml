@@ -1,30 +1,34 @@
-<suite name = "Chat Artmedia Project">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Chat Artmedia Project">
+
+    <listeners>
+        <listener class-name="ge.chat.artmedia.utils.TestListeners"/>
+    </listeners>
+
     <test name="Setup">
         <classes>
             <class name="ge.chat.artmedia.setup.SuiteSetup"/>
         </classes>
     </test>
 
-
-<listeners>
-    <listener class-name="ge.chat.artmedia.utils.TestListeners"/>
-</listeners>
-
-    <test name = "UI Tests">
+    <test name="UI Tests">
         <classes>
-            <class name = "ge.chat.artmedia.ui.HybridTests"/>
-            <class name = "ge.chat.artmedia.ui.CrmTests"/>
-            <class name = "ge.chat.artmedia.ui.InviteTests"/>
+            <class name="ge.chat.artmedia.ui.HybridTests"/>
+            <class name="ge.chat.artmedia.ui.CrmTests"/>
+            <class name="ge.chat.artmedia.ui.InviteTests"/>
+            <class name="ge.chat.artmedia.setup.SuiteSetup"/>
 
         </classes>
     </test>
 
-    <test name = "API Tests">
+    <test name="API Tests">
         <classes>
-            <class name = "ge.chat.artmedia.api.FaqApiTests"/>
-            <class name = "ge.chat.artmedia.api.ReportApiTests"/>
-            <class name = "ge.chat.artmedia.api.DashboardApiTests"/>
-            <class name = "ge.chat.artmedia.api.DepartmentApiTests"/>
+            <class name="ge.chat.artmedia.api.FaqApiTests"/>
+            <class name="ge.chat.artmedia.api.ReportApiTests"/>
+            <class name="ge.chat.artmedia.api.DashboardApiTests"/>
+            <class name="ge.chat.artmedia.api.DepartmentApiTests"/>
         </classes>
     </test>
 

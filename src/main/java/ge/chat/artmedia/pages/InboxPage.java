@@ -79,10 +79,17 @@ public class InboxPage extends BasePage {
     @FindBy(css = "input[type='file']")
     WebElement fileUploadButton;
 
+
+    /**
+     * Verifies that the latest inbox element is visible.
+     */
     public void inboxIsCreated() {
         assertElementIsVisible(latestInbox);
     }
 
+    /**
+     * Blocks a user and confirms the ban.
+     */
     public void blockUser() {
 
         clickToElement(moreActionButton);
@@ -92,46 +99,75 @@ public class InboxPage extends BasePage {
 
     }
 
+    /**
+     * Verifies that the dashboard is visible by checking the logout button.
+     */
     public void dashboardIsVisible() {
         assertElementIsVisible(logoutButton);
     }
 
+
+    /**
+     * Retrieves the email of the user after confirming inbox is created.
+     */
     public String getUserEmail() {
         inboxIsCreated();
         return getText(userEmail);
     }
 
+    /**
+     * Retrieves the displayed username.
+     */
     public String getUserName() {
         return getText(userName);
     }
 
+    /**
+     * Verifies that the typing indicator is visible in the CRM chat.
+     */
     public void typingIndicatorIsVisibleInCrm() {
         assertElementIsVisible(typingIndicator);
     }
 
-    public void typingAMessage(String message){
+    /**
+     * Types a message in the CRM chat after joining the inbox.
+     */
+    public void typingAMessage(String message) {
         clickToElement(joinButton);
         clickToElement(inboxJoinSubmitButton);
         sendText(chatInputField, message);
     }
 
-    public void sendAMessage(String message){
+    /**
+     * Sends a message in the CRM chat after joining the inbox.
+     */
+    public void sendAMessage(String message) {
         clickToElement(joinButton);
         clickToElement(inboxJoinSubmitButton);
         sendText(chatInputField, message);
         clickToElement(sendButton);
     }
-    public void solveInbox(){
+
+    /**
+     * Marks the inbox as solved and waits for redirect to the solved page.
+     */
+    public void solveInbox() {
         clickToElement(solveButton);
         clickToElement(inboxSolveSubmitButton);
         waitForUrlToContainAndReturn("/solved/");
     }
 
-    public void attachmentIsVisible(){
+    /**
+     * Verifies that the attachment element is visible in the chat.
+     */
+    public void attachmentIsVisible() {
         assertElementIsVisible(attachment);
     }
 
-    public void verifyInboxNavButtonsRedirect(){
+    /**
+     * Verifies that each inbox navigation button redirects to the correct page.
+     */
+    public void verifyInboxNavButtonsRedirect() {
         clickToElement(yourInboxButton);
         waitForUrlToContainAndReturn("inbox");
         clickToElement(allInboxButton);
@@ -144,8 +180,11 @@ public class InboxPage extends BasePage {
         waitForUrlToContainAndReturn("solved");
     }
 
-    public void uploadFile(){
-        fileUploadWithFileName(fileUploadButton, "chatpic.jpg");
+    /**
+     * Uploads a file in the chat and sends it.
+     */
+    public void uploadFile() {
+        fileUploadWithFileName(fileUploadButton, "chatpic.webp");
         clickToElement(sendButton);
 
     }

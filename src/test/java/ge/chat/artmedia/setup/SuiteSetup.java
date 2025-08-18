@@ -16,6 +16,10 @@ public class SuiteSetup {
 
     private static boolean agentCreated = false;
 
+
+    /**
+     * Creates a test agent before running the suite.
+     */
     @BeforeSuite
     public void createAgent() {
         InviteHelper inviteHelper = new InviteHelper();
@@ -29,6 +33,9 @@ public class SuiteSetup {
         Utils.logInfo("Create test agent with userId: " + userId);
     }
 
+    /**
+     * Ensures a test agent exists before each test method.
+     */
     @BeforeMethod
     public void ensureAgentExists() {
         if (!agentCreated) {
@@ -40,17 +47,16 @@ public class SuiteSetup {
             agentEmail = inviteHelper.getGeneratedEmail();
             agentPassword = PropertiesReader.readTestData("crm.agent.password");
             verificationLink = inviteHelper.getVerificationLink();
-            System.out.println(userId);
-            System.out.println(agentEmail);
-            System.out.println(verificationLink);
-
             agentCreated = true;
             Utils.logInfo("Create test agent (via ensureAgentExists) with userId: " + userId);
-            System.out.println(agentCreated);
 
         }
     }
 
+
+    /**
+     * Deletes the test agent after the suite finishes.
+     */
     @AfterSuite
     public void deleteAgent() {
         if (userId != null) {

@@ -29,11 +29,15 @@ public class ProfilePage extends BasePage {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement saveButton;
 
-
+    /**
+     * Returns the language selection button element for the given language code.
+     */
     public WebElement getLanguageButton(String langCode) {
         return driver.findElement(By.xpath("//button[@data-value='" + langCode + "']"));
     }
-
+    /**
+     * Retrieves the current platform language code based on the displayed flag icon.
+     */
     public String getCurrentLanguageCode(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement currentLanguageFlag = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -47,13 +51,17 @@ public class ProfilePage extends BasePage {
             return "unknown language";
         }
     }
-
+    /**
+     * Returns the visible page header element matching the given text.
+     */
     public WebElement getPageHeaderByText(String headerText) {
         String xpath = "//div[contains(text(),'" + headerText + "')]";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
-
+    /**
+     * Toggles the platform language between English and Georgian and verifies the header change.
+     */
     public void updatePlatformLanguage() {
 
         clickToElement(settingNavButton);

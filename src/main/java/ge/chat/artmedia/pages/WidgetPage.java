@@ -70,9 +70,10 @@ public class WidgetPage extends BasePage {
     WebElement attachment;
 
 
+    /**
+     * Sends a message via the chat widget, selecting a department if required.
+     */
     public void sendAMessageViaWidget(String name, String email, String text) {
-
-
 
         clickToElement(chatFrame);
         switchToIFrame(chatIframe);
@@ -98,6 +99,9 @@ public class WidgetPage extends BasePage {
         clickToElement(sendButton);
     }
 
+    /**
+     * Types a message in the chat widget without sending it.
+     */
     public void typingAMessage(String name, String email, String text) {
 
         clickToElement(chatFrame);
@@ -112,16 +116,26 @@ public class WidgetPage extends BasePage {
         sendText(messageInput, text);
     }
 
+
+    /**
+     * Confirms the end of the chat session.
+     */
     public void userAcceptsChatEnding() {
         clickToElement(backToMainButton);
     }
 
+    /**
+     * Submits a rating after a chat session.
+     */
     public void userSubmitsRating() {
         clickToElement(rateEmojiButton);
         clickToElement(rateSubmitButton);
 
     }
 
+    /**
+     * Verifies that a blocked user cannot start a chat.
+     */
     public void verifyBlockedUserCannotStartChat(String name, String email) {
         sendText(nameField, name);
         sendText(emailField, email);
@@ -130,6 +144,9 @@ public class WidgetPage extends BasePage {
         assertElementIsVisible(blockedModal);
     }
 
+    /**
+     * Verifies that an unblocked user can start a chat and send a message.
+     */
     public void verifyUnblockedUserCanStartChat(String name, String email, String text) {
         sendText(nameField, name);
         sendText(emailField, email);
@@ -143,20 +160,32 @@ public class WidgetPage extends BasePage {
         assertEquals(actualText, text);
     }
 
+    /**
+     * Verifies that the typing indicator is visible in the chat widget.
+     */
     public void typingIndicatorIsVisibleInWidget() {
         assertElementIsVisible(typingIndicator);
     }
 
+    /**
+     * Verifies that an agent's message is visible in the chat widget.
+     */
     public void agentMessageIsVisible() {
         assertElementIsVisible(agentMessage);
     }
 
+    /**
+     * Uploads a file via the chat widget and sends it.
+     */
     public void uploadFile() {
-        fileUploadWithFileName(fileUploadButton, "chatpic.jpg");
+        fileUploadWithFileName(fileUploadButton, "chatpic.webp");
         clickToElement(sendButton);
 
     }
 
+    /**
+     * Verifies that the uploaded file attachment is visible in the chat.
+     */
     public void attachmentIsVisible() {
         assertElementIsVisible(attachment);
     }

@@ -11,6 +11,7 @@ public class PasswordChangePage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(id = "settings")
     WebElement settingsNavButton;
 
@@ -48,8 +49,10 @@ public class PasswordChangePage extends BasePage {
     WebElement invalidFormatMessage;
 
 
-
-    public void changePasswordWithValidCredentials(String oldPassword, String newPassword){
+    /**
+     * Changes the password using valid old and new credentials, verifies success message, and logs the user out.
+     */
+    public void changePasswordWithValidCredentials(String oldPassword, String newPassword) {
         clickToElement(settingsNavButton);
         clickToElement(passwordChangeNavButton);
         sendText(oldPasswordField, oldPassword);
@@ -60,7 +63,10 @@ public class PasswordChangePage extends BasePage {
         clickToElement(logoutSubmitButton);
     }
 
-    public void changePasswordWithInvalidOldPassword(String oldPassword, String newPassword){
+    /**
+     * Attempts to change the password with an incorrect old password and verifies the error message is displayed.
+     */
+    public void changePasswordWithInvalidOldPassword(String oldPassword, String newPassword) {
         clickToElement(settingsNavButton);
         clickToElement(passwordChangeNavButton);
         sendText(oldPasswordField, oldPassword);
@@ -69,7 +75,10 @@ public class PasswordChangePage extends BasePage {
         assertElementIsVisible(errorMessage);
     }
 
-    public void changePasswordWithEmptyFields(){
+    /**
+     * Attempts to change the password with empty fields and verifies field validation messages are displayed.
+     */
+    public void changePasswordWithEmptyFields() {
         clickToElement(settingsNavButton);
         clickToElement(passwordChangeNavButton);
         clickToElement(submitButton);
@@ -77,6 +86,9 @@ public class PasswordChangePage extends BasePage {
         assertElementIsVisible(secondFieldValidationMsg);
     }
 
+    /**
+     * Attempts to change the password with an invalid new password format and verifies the error message is displayed.
+     */
     public void changePasswordWithInvalidNewPassword(String oldPassword, String newPassword) {
         clickToElement(settingsNavButton);
         clickToElement(passwordChangeNavButton);

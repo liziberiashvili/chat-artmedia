@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+
+# TestNG reports
+/test-output/
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

@@ -15,14 +15,16 @@ public class InviteHelper {
     private String generatedEmail;
     private String userId;
 
-    public void inviteAgent(){
+    /**
+     * Sends an API request to invite a new agent and stores their details.
+     */
+    public void inviteAgent() {
         RestAssured.baseURI = PropertiesReader.readConfig("base.URI");
 
         String token = AuthHelper.getAuthTokenForRole("admin");
         System.out.println(token);
 
         generatedEmail = TestDataFactory.randomEmail();
-        System.out.println(generatedEmail);
         String requestBody = String.format("""
                 {
                   "email": "%s",
@@ -42,24 +44,35 @@ public class InviteHelper {
                 .extract().response();
 
         verificationLink = response.jsonPath().getString("data.link");
-        System.out.println(verificationLink);
         userId = getUserByEmail(generatedEmail, token);
-        System.out.println(userId);
     }
 
-    public String getVerificationLink(){
+    /**
+     * Returns the stored verification link for the invited agent.
+     */
+    public String getVerificationLink() {
         return verificationLink;
     }
 
+    /**
+     * Returns the generated email address for the invited agent.
+     */
     public String getGeneratedEmail() {
         return generatedEmail;
     }
-    public String getUserId(){
+
+    /**
+     * Returns the stored user ID for the invited agent.
+     */
+    public String getUserId() {
         return userId;
     }
 
-    public static String getUserByEmail(String email, String token){
-        RestAssured.baseURI = PropertiesReader.readConfig("base.URI");;
+    /**
+     * Retrieves a user's ID by their email address using the API.
+     */
+    public static String getUserByEmail(String email, String token) {
+        RestAssured.baseURI = PropertiesReader.readConfig("base.URI");
 
         Response response = RestAssured
                 .given()
@@ -77,8 +90,10 @@ public class InviteHelper {
         }
         return null;
     }
-
-    public static void deleteUserById(String userId, String token){
+    /**
+     * Deletes a user by ID using the API.
+     */
+    public static void deleteUserById(String userId, String token) {
         RestAssured.baseURI = PropertiesReader.readConfig("base.URI");
         if (userId != null) {
             RestAssured

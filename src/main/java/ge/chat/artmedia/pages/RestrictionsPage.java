@@ -31,7 +31,9 @@ public class RestrictionsPage extends BasePage {
     WebElement dashboardNavButton;
 
 
-
+    /**
+     * Unblocks a user by email through the restrictions panel and returns to the dashboard.
+     */
     public void unblockUser(String email){
         clickToElement(usersNavButton);
         clickToElement(restrictionsButton);

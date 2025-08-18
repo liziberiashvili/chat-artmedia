@@ -8,6 +8,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class AuthHelper {
+
+    /**
+     * Retrieves an authentication token for a given CRM role using API login.
+     */
     public static String getAuthTokenForRole(String roleKey){
         String emailKey = "crm." + roleKey + ".email";
         String passwordKey = "crm." + roleKey + ".password";
@@ -25,6 +29,9 @@ public class AuthHelper {
         return response.jsonPath().getString("data.accessToken");
     }
 
+    /**
+     * Injects an authentication token into the browser's local storage.
+     */
     public static void injectToken(WebDriver driver, String token) {
         driver.get("http://109.172.158.104:3011/login");
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -32,6 +39,9 @@ public class AuthHelper {
         driver.navigate().refresh();
     }
 
+    /**
+     * Authenticates a user in the browser by retrieving and injecting their token.
+     */
     public static void authenticateUserViaApi(WebDriver driver, String roleKey){
         String token = getAuthTokenForRole(roleKey);
         injectToken(driver, token);
