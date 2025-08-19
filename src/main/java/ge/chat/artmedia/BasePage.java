@@ -109,10 +109,6 @@ public class BasePage {
 
         locator.sendKeys(file.getAbsolutePath());
         Utils.logInfo("Uploading file: "  + fileName);
-
-        System.out.println("Resource URL: " + resource);
-        System.out.println("Absolute path: " + file.getAbsolutePath());
-        System.out.println("File length: " + file.length());
     }
 
 
