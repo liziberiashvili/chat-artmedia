@@ -79,6 +79,9 @@ public class InboxPage extends BasePage {
     @FindBy(css = "input[type='file']")
     WebElement fileUploadButton;
 
+    @FindBy(xpath = "//img[@alt='Preview']")
+    WebElement previewPoint;
+
 
     /**
      * Verifies that the latest inbox element is visible.
@@ -186,6 +189,7 @@ public class InboxPage extends BasePage {
     public void uploadFile() {
         fileUploadWithFileName(fileUploadButton, "chatpic.webp");
         clickToElement(sendButton);
+        assertElementIsVisible(previewPoint);
 
     }
 }

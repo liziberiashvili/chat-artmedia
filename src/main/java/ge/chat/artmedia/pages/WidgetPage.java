@@ -69,6 +69,9 @@ public class WidgetPage extends BasePage {
     @FindBy(xpath = "//img[@alt='attachment']")
     WebElement attachment;
 
+    @FindBy(xpath = "//img[@alt='Preview']")
+    WebElement previewPoint;
+
 
     /**
      * Sends a message via the chat widget, selecting a department if required.
@@ -179,6 +182,7 @@ public class WidgetPage extends BasePage {
      */
     public void uploadFile() {
         fileUploadWithFileName(fileUploadButton, "chatpic.webp");
+        assertElementIsVisible(previewPoint);
         clickToElement(sendButton);
 
     }
